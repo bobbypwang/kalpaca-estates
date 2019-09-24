@@ -136,8 +136,8 @@ app.use((req, res, next) => {
 const index = require('./routes/index');
 app.use('/', index);
 
-const amnenityRoutes = require('./routes/amnenity')
-app.use('/', amnenityRoutes)
+const amenityRoutes = require('./routes/amenity')
+app.use('/', amenityRoutes)
 
 const userRoutes = require('./routes/user')
 app.use('/', userRoutes)
