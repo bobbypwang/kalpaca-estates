@@ -1,0 +1,34 @@
+aside,
+header {
+  background-color: $darkgray;
+  color: $white;
+}
+
+aside {
+
+  nav {
+    align-self: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: $lightblue;
+
+    &:hover {
+      color: $lightgreen;
+      border-bottom: $darkgreen;
+    }
+  }
+
+  ul {
+
+    li {
+      margin-right: .7rem;
+
+      &.nav-header {
+        margin-right: 1rem;
+        font-weight: bold;
+      }
+    }
+  }
+}

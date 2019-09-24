@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <aside>
+      <a href="/" class="title">
+        <h1>CRUD Movie Celebs</h1>
+      </a>
+      <nav class="website-nav">
+        <ul>
+          <li class="nav-header">Celebrities</a></li>
+          <li><a href="/celebrities">All</a></li>
+          <li><a href="/celebrities/new">New</a></li>
+        </ul>
+        <ul>
+          <li class="nav-header">Movies</a></li>
+          <li><a href="/movies">All</a></li>
+          <li><a href="/movies/new">New</a></li>
+        </ul>
+      </nav>
+      <nav class="user-nav">
+        <ul>
+          {{#if currentUser}}
+
+          <li>Welcome {{currentUser.username}}</li>
+          <li><a href="/logout">Logout</a></li>
+          {{else}}
+
+          <li><a href="/signup">Signup</a></li>
+          <li><a href="/login">Login</a></li>
+          {{/if}}
+        </ul>
+      </nav>
+    </aside>
+    <section>
+      <article>
+        {{{body}}}
+      </article>
+    </section>
+  </div>
+  <script src="/javascripts/script.js"></script>
+</body>
+
+</html>

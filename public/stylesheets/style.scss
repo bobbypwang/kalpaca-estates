@@ -1,0 +1,35 @@
+$lightpurple: #c782d8;
+$darkpurple: #e061ff;
+$lightgreen: #98ff80;
+$darkgreen: #38cf16;
+$lightblue: #00B7FF;
+$black: #000000;
+$darkgray: #222222;
+$gray: #444444;
+$lightgray: #bbbbbb;
+$lightergray: #eeeeee;
+$white: #ffffff;
+
+$bodyfont:  "Open Sans", Helvetica, Arial, sans-serif;
+
+@import 'parts/normalize';
+@import 'parts/mixins';
+@import 'parts/layout';
+@import 'parts/nav';
+@import 'parts/type';
+@import 'parts/content';
+
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 200ms;
+}
+
+body {
+  font-size: 14px;
+  font-family: $bodyfont;
+}

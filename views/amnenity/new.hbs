@@ -1,0 +1,25 @@
+<div class="movie-new">
+    <h2>Add Movie</h2>
+    {{> site-error}}
+    <form method="POST" action="/movies">
+
+        <label for="title">Title:</label>
+        <input name="title" type="text" required />
+
+        <label for="genre">Genre:</label>
+        <input name="genre" type="text" required />
+
+        <label for="plot">Plot:</label>
+        <input name="plot" type="text" required />
+
+        <label for="celebrity">Select a Starring Celebrity</label>
+        <select name="celebrity">
+            {{#each celebs}}
+            <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+        
+        <button class="submit">Submit</button>
+        {{> form-error}}
+    </form>
+</div>
