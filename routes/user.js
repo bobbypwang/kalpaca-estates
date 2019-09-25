@@ -59,9 +59,8 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
-    res.render('users/login', {
-        "errorFormMessage": req.flash("errorFormMessage", "Please login below to access your profile page.")
-    })
+    res.render('users/login', {})
+    req.flash("errorFormMessage", "Please login below to access your profile page.")
 });
 
 router.post("/login", passport.authenticate("local", {
@@ -71,40 +70,10 @@ router.post("/login", passport.authenticate("local", {
     passReqToCallback: true
 }));
 
-//
-// manual login code not using passport
-//
-// router.post('/login', (req, res, next) => {
 
-// router.get('/login', (req, res, next) => {
-//     res.render('users/login')
-// })
-
-//     User.findOne({
-//             username: req.body.username
-//         })
-//         .then((user) => {
-//             if (!user) {
-//                 req.flash('error', `sorry that username doesn't exist`)
-//                 res.redirect('/')
-//             }
-//             if (bcrypt.compareSync(req.body.password, user.password)) {
-//                 req.user = user
-//                 res.redirect('/')
-//             } else {
-//                 res.render('users/login', {
-//                     errorMessage: "Incorrect password"
-//                 })
-//             }
-//         })
-//         .catch((e) => {
-//             errorMessage = e
-//         })
-// })
-
-router.get("/logout", (req, res, next) => {
+router.get("/logout", (req, res, next) => { 
     req.logout()
-    res.render("/users/logout")
+    res.render("users/logout")
 })
 
 
