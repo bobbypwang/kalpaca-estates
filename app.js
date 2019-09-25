@@ -152,6 +152,9 @@ app.use((req, res, next) => {
 const index = require('./routes/index');
 app.use('/', index);
 
+const roomRoutes = require('./routes/room')
+app.use('/', roomRoutes)
+
 const amenityRoutes = require('./routes/amenity')
 app.use('/', amenityRoutes)
 
