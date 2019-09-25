@@ -20,13 +20,14 @@
         <input name="password" type="password" required />
 
         <button class="submit">Submit</button>
+        {{> form-error}}
 
-        <p class="account-message">
-            Don't have an account? <a href="/signup">Sign up</a>
-        </p>
-
-        <div>
+        <div class="login-option">
             <a href="/auth/google">Login With Google</a>
+        </div>
+
+        <div class="account-message">
+            Don't have an account? <a href="/signup">Sign up</a>
         </div>
 
     </form>
@@ -47,6 +48,9 @@
         <label for ="passwordConfirm">Confirm Password</label>
         <input name="passwordConfirm" type="password" required />
 
-        <button>Submit</button>
+        <button class="submit" onsubmit="return false">Submit</button>
+        {{#if errorSignupMessage }}
+        <div class="error-message error-form">{{ errorSignupMessage }}</div>
+        {{/if}}
     </form>
 </div>

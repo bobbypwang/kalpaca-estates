@@ -5,10 +5,10 @@ const userSchema = new Schema({
   username: {
     type: String,
     unique: true,
-    isAdmin: Boolean,
-    role: {type: String, enum: ["user", "editor", "admin"]},
     googleId: String
   },
+  isAdmin: Boolean,
+  role: {type: String, enum: ["user", "editor", "admin"]},
   password: String
 }, {
   timestamps: true

@@ -4,7 +4,8 @@
 
 <p>This page is only accessible by logged in users.</p>
 
-
+{{#if isAdmin}}
+<h2>Admin Stuff Below</h2>
 <div class="user-creation">
     <h2>User Creation</h2>
 
@@ -29,3 +30,4 @@
         {{> form-error}}
     </form>
 </div>
+{{/if}}

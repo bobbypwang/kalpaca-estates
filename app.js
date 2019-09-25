@@ -146,6 +146,7 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.errorGlobalMessage = req.flash('errorGlobalMessage');
   res.locals.errorFormMessage = req.flash('errorFormMessage');
+  res.locals.errorSignupMessage = req.flash('errorSignupMessage');
   next();
 });
 
@@ -160,6 +161,9 @@ app.use('/', amenityRoutes)
 
 const userRoutes = require('./routes/user')
 app.use('/', userRoutes)
+
+const adminRoutes = require('./routes/admin')
+app.use('/', adminRoutes)
 
 
 module.exports = app;

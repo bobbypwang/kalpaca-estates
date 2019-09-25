@@ -10,14 +10,11 @@
         <label for="password">Password:</label>
         <input name="password" type="password" required />
 
-        <label for="setAdmin">Set as Administrator:</label><br />
-        <input name="setAdmin" id="NotAnAdmin" type="radio" value="false" selected>
-        <label for="NotAnAdmin">No</label>
-        <input name="setAdmin" id="MakeAnAdmin" type="radio" value="true">
-        <label for="MakeAnAdmin">Yes</label>
+        <label for ="passwordConfirm">Confirm Password</label>
+        <input name="passwordConfirm" type="password" required />
 
         <br /><br />
-        <button>Submit</button>
+        <button class="submit" onsubmit="return false">Submit</button>
         {{> form-error}}
     </form>
 </div>
