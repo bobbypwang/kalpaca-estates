@@ -35,9 +35,9 @@ router.get('/rooms/details/:theId', (req, res, next) => {
 
 router.get('/rooms/new', (req, res, next) => {
     Amenity.find({})
-        .then((amenity.) => {
+        .then((amenity) => {
             res.render('../views/rooms/new', {
-                amenity.
+                amenity
             })
         })
         .catch((err) => {

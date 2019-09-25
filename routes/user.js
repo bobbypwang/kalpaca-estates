@@ -1,8 +1,19 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/User.js')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
+const User = require('../models/User.js')
+
+router.get("/profile", (req, res, next) => {
+
+    if (req.user) {
+        res.render("users/profile")
+    } else {
+        req.flash("errorGlobalMessage", "Please login below to access your profile page.")
+        res.redirect("/login")
+    }
+
+})
 
 router.get("/signup", (req, res, next) => {
 
@@ -10,6 +21,7 @@ router.get("/signup", (req, res, next) => {
         req.flash('errorFormMessage', 'You do not have permission to access this page.')
     }
     res.render("users/signup");
+
 });
 
 router.post('/signup', (req, res, next) => {
@@ -17,14 +29,20 @@ router.post('/signup', (req, res, next) => {
     const salt = bcrypt.genSaltSync(10)
     let password = bcrypt.hashSync(req.body.password, salt)
 
-    User.create({
+    console.log(`the passwordConfirm is [${req.body.passwordConfirm}] and password is [${req.body.password}]`)
+
+    if (req.body.password != req.body.passwordConfirm) {
+        req.flash('errorFormMessage', 'Passwords do not match.')
+        res.redirect("/signup")
+    } else {
+        User.create({
             username: req.body.username,
             password: password
         })
         .then(user => {
             req.login(user, function (err) {
                 if (!err) {
-                    res.redirect('/')
+                    res.redirect('/profile')
                 } else {
                     next(err);
                 }
@@ -34,6 +52,8 @@ router.post('/signup', (req, res, next) => {
         .catch(e => {
             res.status(500).send(e)
         })
+    }
+
 });
 
 router.get("/login", (req, res, next) => {
@@ -43,7 +63,7 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/profile",
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true
@@ -85,17 +105,6 @@ router.get("/logout", (req, res, next) => {
     // password uses just req.logout()
     // req.session.destroy((err) => {
     res.redirect("/login")
-})
-
-router.get('/secret', (req, res, next) => {
-
-    console.log(req.user)
-
-    if (req.user) {
-        res.render('users/secret')
-    } else {
-        res.redirect('/')
-    }
 })
 
 

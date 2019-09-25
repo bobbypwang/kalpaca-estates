@@ -13,8 +13,10 @@ const bcrypt = require('bcryptjs');
 const MongoStore = require("connect-mongo")(session);
 const flash = require("express-flash")
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+
 const User = require('./models/User.js')
+
+const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 
@@ -142,10 +144,8 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
-  // passport uses req.user
-  // res.locals.currentUser = req.session.currentUser;
-  res.locals.errorGlobalMessage = req.flash('errorGlobal');
-  res.locals.errorFormMessage = req.flash('errorForm');
+  res.locals.errorGlobalMessage = req.flash('errorGlobalMessage');
+  res.locals.errorFormMessage = req.flash('errorFormMessage');
   next();
 });
 

@@ -4,6 +4,7 @@ const Amenity = require('../models/Amenity.js')
 
 
 router.get('/amenities', async (req, res, next) => {
+
     try {
         let celebs = await Amenity.find({})
         res.render('../views/amenities/index', {
@@ -12,7 +13,9 @@ router.get('/amenities', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
+
 })
+
 
 router.get('/amenities/details/:theId', (req, res, next) => {
     let id = req.params.theId
@@ -27,9 +30,13 @@ router.get('/amenities/details/:theId', (req, res, next) => {
         })
 })
 
+
 router.get('/amenities/new', (req, res, next) => {
+
     res.render('../views/amenities/new')
+
 })
+
 
 router.post('/amenities', (req, res, next) => {
     let name = req.body.theName
@@ -41,17 +48,16 @@ router.post('/amenities', (req, res, next) => {
             occupation: occupation,
             catchPhrase: catchPhrase
         })
-
         .then((result) =>
             res.redirect('/amenities')
         )
-
         .catch((error) => {
             res.render('../views/amenities/new', {
                 error
             })
         })
 })
+
 
 router.post('/amenities/:theId/delete', (req, res, next) => {
     let id = req.params.theId
@@ -65,8 +71,10 @@ router.post('/amenities/:theId/delete', (req, res, next) => {
         })
 })
 
+
 router.get('/amenities/:theId/edit', (req, res, next) => {
     let id = req.params.theId
+
     Amenity.findById(id)
         .then((theCeleb) => {
             res.render('../views/amenities/edit', {
@@ -94,6 +102,7 @@ router.post('/amenities/:theId', (req, res, next) => {
         .catch((err) => {
             next(err)
         })
+        
 })
 
 module.exports = router;

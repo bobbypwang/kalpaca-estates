@@ -1,6 +1,6 @@
 {{#if currentUser}}
 <h2>Welcome {{currentUser.name}}</h2>
-<p>Have you visited the <a href="/secret/">secret page</a> for only logged in users?</p>
+<p><a href="/profile/">user profile page</a> for only logged in users?</p>
 {{else}}
 <h2>Welcome Stranger</h2>
 <p>Please <a href="/login">login</a> or <a href="/signup">signup</a> to continue.</p>
@@ -20,7 +20,6 @@
         <input name="password" type="password" required />
 
         <button class="submit">Submit</button>
-        {{> form-error}}
 
         <p class="account-message">
             Don't have an account? <a href="/signup">Sign up</a>
@@ -33,26 +32,21 @@
     </form>
 </div>
 
-<div class="user-new">
+<div class="user-signup">
     <h2>User Signup</h2>
 
     {{> site-error}}
     <form method="POST" action="/signup">
 
-        <label for="username">Username:</label>
+        <label for="username">Username</label>
         <input name="username" type="text" required />
 
-        <label for="password">Password:</label>
+        <label for="password">Password</label>
         <input name="password" type="password" required />
 
-        <label for="setAdmin">Set as Administrator:</label><br />
-        <input name="setAdmin" id="NotAnAdmin" type="radio" value="false" selected>
-        <label for="NotAnAdmin">No</label>
-        <input name="setAdmin" id="MakeAnAdmin" type="radio" value="true">
-        <label for="MakeAnAdmin">Yes</label>
+        <label for ="passwordConfirm">Confirm Password</label>
+        <input name="passwordConfirm" type="password" required />
 
-        <br /><br />
         <button>Submit</button>
-        {{> form-error}}
     </form>
 </div>
