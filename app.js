@@ -34,6 +34,9 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
+// default value for title local
+app.locals.title = 'Kalpaca Estates';
+
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -61,11 +64,6 @@ hbs.registerPartial('site-error', '{{errorSiteMessage}}')
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
-
-// default value for title local
-// app.locals.title = 'Express - Generated with IronGenerator';
-
 app.use(session({
   secret: "basic-auth-secret",
   cookie: {
@@ -91,6 +89,24 @@ passport.deserializeUser((id, cb) => {
 });
 
 app.use(flash())
+
+passport.use(
+  new LocalStrategy((username, password, next) => {
+    User.findOne({ username }, (err, user) => {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return next(null, false, { message: "Incorrect username" });
+      }
+      if (!bcrypt.compareSync(password, user.password)) {
+        return next(null, false, { message: "Incorrect password" });
+      }
+
+      return next(null, user);
+    });
+  })
+);
 
 passport.use(
   new GoogleStrategy(

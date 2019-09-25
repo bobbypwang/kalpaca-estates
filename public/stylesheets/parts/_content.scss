@@ -1,14 +1,21 @@
-.celeb {
-    h2 {
-        margin-bottom: 0;
-    }
+#header {
+  width: 100vw;
+  // height: 100vh;
 }
 
-.occupation,
-.genre {
-    display: block;
-    margin-top: -3px;
-    color: $lightgray;
-    font-size: .8rem;
-    font-style: italic;
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.navigation {
+  width: 100%;
+}
+
+.website-nav {
+  display: flex;
+  justify-content: space-evenly;
 }

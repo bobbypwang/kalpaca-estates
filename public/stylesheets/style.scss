@@ -1,8 +1,3 @@
-$lightpurple: #c782d8;
-$darkpurple: #e061ff;
-$lightgreen: #98ff80;
-$darkgreen: #38cf16;
-$lightblue: #00B7FF;
 $black: #000000;
 $darkgray: #222222;
 $gray: #444444;
@@ -10,6 +5,7 @@ $lightgray: #bbbbbb;
 $lightergray: #eeeeee;
 $white: #ffffff;
 
+$headerfont: "Open Sans", Helvetica, Arial, sans-serif;
 $bodyfont:  "Open Sans", Helvetica, Arial, sans-serif;
 
 @import 'parts/normalize';
