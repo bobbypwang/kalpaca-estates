@@ -3,7 +3,9 @@ const Schema = mongoose.Schema
 
 const amenitySchema = new Schema({
     name: String,
-    type: String
+    price: String,
+    description: String
+
 })
 
 const Amenity = mongoose.model('Amenity', amenitySchema)
