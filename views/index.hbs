@@ -1,64 +1,74 @@
-{{#if currentUser}}
-<h2>Welcome {{currentUser.name}}</h2>
-<p><a href="/profile/">user profile page</a> for only logged in users?</p>
-{{else}}
-<h2>Welcome Stranger</h2>
-<p>Please <a href="/login">login</a> or <a href="/signup">signup</a> to continue.</p>
-{{/if}}
+<section>
+    {{#if currentUser}}
+    <h2>Welcome {{currentUser.name}}</h2>
+    <p><a href="/profile/">user profile page</a> for only logged in users?</p>
+    {{else}}
+    <h2>Welcome Stranger</h2>
+    <p>Please <a href="/login">login</a> or <a href="/signup">signup</a> to continue.</p>
+    {{/if}}
+</section>
 
-<br /><br /><br />
 
-<div class="user-login">
-    <h2>User Login</h2>
-    {{> site-error}}
-    <form method="POST" action="/login">
+<section>
+    <div class="user-login">
+        <h2>User Login</h2>
+        {{> site-error}}
+        <form method="POST" action="/login">
 
-        <label for="username">Username:</label>
-        <input name="username" type="text" required />
+            <label for="username">Username:</label>
+            <input name="username" type="text" required />
 
-        <label for="password">Password:</label>
-        <input name="password" type="password" required />
+            <label for="password">Password:</label>
+            <input name="password" type="password" required />
 
-        <button class="submit">Submit</button>
-        {{> form-error}}
+            <button class="submit">Submit</button>
+            {{> form-error}}
 
-        <div class="login-option">
-            <a href="/auth/google">Login With Google</a>
-        </div>
+            <div class="login-option">
+                <a href="/auth/google">Login With Google</a>
+            </div>
 
-        <div class="account-message">
-            Don't have an account? <a href="/signup">Sign up</a>
-        </div>
+            <div class="account-message">
+                Don't have an account? <a href="/signup">Sign up</a>
+            </div>
 
-    </form>
-</div>
+        </form>
+    </div>
+</section>
 
-<div class="user-signup">
-    <h2>User Signup</h2>
+<section>
+    <div class="user-signup">
+        <h2>User Signup</h2>
 
-    {{> site-error}}
-    <form method="POST" action="/signup">
+        {{> site-error}}
+        <form method="POST" action="/signup">
 
-        <label for="username">Username</label>
-        <input name="username" type="text" required />
+            <label for="username">Username</label>
+            <input name="username" type="text" required />
 
-        <label for="password">Password</label>
-        <input name="password" type="password" required />
+            <label for="password">Password</label>
+            <input name="password" type="password" required />
 
-        <label for ="passwordConfirm">Confirm Password</label>
-        <input name="passwordConfirm" type="password" required />
+            <label for="passwordConfirm">Confirm Password</label>
+            <input name="passwordConfirm" type="password" required />
 
-        <button class="submit" onsubmit="return false">Submit</button>
-        {{#if errorSignupMessage }}
-        <div class="error-message error-form">{{ errorSignupMessage }}</div>
-        {{/if}}
-    </form>
-</div>
+            <button class="submit" onsubmit="return false">Submit</button>
+            {{#if errorSignupMessage }}
+            <div class="error-message error-form">{{ errorSignupMessage }}</div>
+            {{/if}}
+        </form>
+    </div>
+</section>
 
-<div class="booking">
-    <label for="arriveDate">Check In</label>
-    Date: <input type="text" id="datepicker" name="checkInDate">
-    <label for="departDate">Check Out</label>
-    Date: <input type="text" id="datepicker" name="checkOutDate">
-    <button>Submit</button>
-</div>
+<section>
+    <div class="booking">
+        <form action="/booking" method="POST">
+            <h2>Book a Kalpaca Stay</h2>
+            <label for="checkInDate">Check In</label>
+            Date: <input type="text" id="datepickerStart" class="datePicker" name="checkInDate">
+            <label for="checkOutDate">Check Out</label>
+            Date: <input type="text" id="datepickerEnd" class="datePicker" name="checkOutDate">
+            <button>Submit</button>
+        </form>
+    </div>
+</section>

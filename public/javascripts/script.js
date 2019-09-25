@@ -6,3 +6,7 @@ $(".list ul li").hover(
     $(this).removeClass('hover');
   }
 );
+
+$( function() {
+  $( ".datePicker" ).datepicker();
+} );

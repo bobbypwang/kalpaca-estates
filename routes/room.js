@@ -106,4 +106,20 @@ router.post('/rooms/:theId', (req, res, next) => {
         })
 })
 
+router.post('/booking', (req, res, next) => {
+    let checkInDate = req.body.checkInDate;
+    let checkOutDate = req.body.checkOutDate;
+    console.log(req.query.start + ' + ' + req.query.end)
+    res.redirect('/booking?start:'+checkInDate+'&end:'+checkOutDate)
+})
+
+router.get('/booking', (req, res, next) => {
+    let checkInDate = req.query.start;
+    let checkOutDate = req.query.end;
+
+    // booking logic goes here for the rooms.
+
+    res.render('../views/booking')
+})
+
 module.exports = router;

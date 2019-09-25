@@ -165,5 +165,4 @@ app.use('/', userRoutes)
 const adminRoutes = require('./routes/admin')
 app.use('/', adminRoutes)
 
-
 module.exports = app;

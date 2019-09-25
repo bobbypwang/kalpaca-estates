@@ -8,6 +8,7 @@ const roomSchema = new Schema({
     bedType: String,
     bedNumber: Number,
     floorLocation: String,
+    imageUrl: String,
     amenity: {type: Schema.Types.ObjectId, ref: "Amenity"},
     bookeDates: Date
 })

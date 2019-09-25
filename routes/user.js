@@ -76,6 +76,10 @@ router.get("/logout", (req, res, next) => {
     res.render("users/logout")
 })
 
+// router.post("/user/change-password", (req, res, next) => {
+//     User.findByIdAndUpdate(req.user._id, )
+// })
+
 
 router.get(
     "/auth/google",
