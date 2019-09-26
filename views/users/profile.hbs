@@ -17,9 +17,9 @@
     </form>
 </section>
 
-{{#if isAdmin}}
+{{#if user.isAdmin}}
+<h2>Admin Stuff Below</h2>
 <section>
-    <h2>Admin Stuff Below</h2>
     <div class="user-creation">
         <h2>User Creation</h2>
 
@@ -44,5 +44,36 @@
             {{> form-error}}
         </form>
     </div>
+</section>
+
+<section>
+    <h2>User List -- View and Edit here</h2>
+    <div class="user-list">
+        <table class="sortable-theme-light" id ="userList" data-sortable>
+            <tr>
+                <th data-sorted="true">Username</th>
+                <th data-sorted="true">Role</th>
+                <th data-sortable="false">Delete</th>
+                <th data-sortable="false">Edit</th>
+            </tr>
+            {{#each allUsers}}
+            <tr>
+                <td>{{this.username}}</td>
+                <td>{{this.role}}</td>
+                <td><a href="/admin/delete/{{this._id}}">Delete</a></td>
+                <td><a href="">Edit</a></td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+
+</section>
+
+<section>
+    <h2>Room List -- View and Edit here</h2>
+</section>
+
+<section>
+    <h2>Amenity List -- View and Edit here</h2>
 </section>
 {{/if}}

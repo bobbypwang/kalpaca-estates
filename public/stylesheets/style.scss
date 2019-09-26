@@ -9,6 +9,7 @@ $headerfont: "Open Sans", Helvetica, Arial, sans-serif;
 $bodyfont:  "Open Sans", Helvetica, Arial, sans-serif;
 
 @import 'parts/normalize';
+@import 'parts/sortable';
 @import 'parts/mixins';
 @import 'parts/layout';
 @import 'parts/nav';

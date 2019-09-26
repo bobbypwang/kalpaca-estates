@@ -40,13 +40,13 @@ router.get('/active-users', (req, res, next) => {
 
 })
 
-router.post('/admin/delete/:idThing', (req, res, next) => {
+router.post('/delete/:id', (req, res, next) => {
 
-  User.findByIdAndRemove(req.params.idThing)
+  User.findByIdAndRemove(req.params.id)
 
     .then((result) => {
-      req.flash('success', 'account successfully deleted')
-      res.redirect('/active-users');
+      req.flash("errorFormMessage", "Account sucessfully deleted.")
+      res.redirect('/profile');
     })
 
     .catch((err) => {

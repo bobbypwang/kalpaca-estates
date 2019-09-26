@@ -2,14 +2,22 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
+
 const User = require('../models/User.js')
 
 router.get("/profile", (req, res, next) => {
 
     if (req.user) {
-        res.render("users/profile")
+        User.find()
+            .then((allUsers) => {
+                console.log(req.user.isAdmin)
+                res.render("users/profile", {
+                    allUsers,
+                    user: req.user
+                })
+            })
     } else {
-        req.flash("errorGlobalMessage", "Please login below to access your profile page.")
+        req.flash("errorFormMessage", "Please login below to access your profile page.")
         res.redirect("/login")
     }
 
@@ -36,24 +44,24 @@ router.post('/signup', (req, res, next) => {
         res.redirect("/#signup")
     } else {
         User.create({
-            username: req.body.username,
-            isAdmin: false,
-            role: "user",
-            password: password
-        })
-        .then(user => {
-            req.login(user, function (err) {
-                if (!err) {
-                    res.redirect('/profile')
-                } else {
-                    next(err);
-                }
-
+                username: req.body.username,
+                isAdmin: false,
+                role: "user",
+                password: password
             })
-        })
-        .catch(e => {
-            res.status(500).send(e)
-        })
+            .then(user => {
+                req.login(user, function (err) {
+                    if (!err) {
+                        res.redirect('/profile')
+                    } else {
+                        next(err);
+                    }
+
+                })
+            })
+            .catch(e => {
+                res.status(500).send(e)
+            })
     }
 
 });
@@ -71,7 +79,7 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 
-router.get("/logout", (req, res, next) => { 
+router.get("/logout", (req, res, next) => {
     req.logout()
     res.render("users/logout")
 })

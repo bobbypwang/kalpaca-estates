@@ -163,6 +163,6 @@ const userRoutes = require('./routes/user')
 app.use('/', userRoutes)
 
 const adminRoutes = require('./routes/admin')
-app.use('/', adminRoutes)
+app.use('/admin/', adminRoutes)
 
 module.exports = app;
