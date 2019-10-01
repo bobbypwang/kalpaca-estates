@@ -21,7 +21,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 
 mongoose
-  .connect('mongodb://localhost/kalpaca', {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
   })
   .then(x => {
