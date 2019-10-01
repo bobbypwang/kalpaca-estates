@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const favicon = require('serve-favicon');
-const hbs = require('hbs');
+const hbs = require('express-hbs');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
@@ -14,7 +14,7 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("express-flash")
 const passport = require("passport");
 
-const User = require('./models/User.js')
+const User = require('./models/User.js');
 
 const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -55,12 +55,19 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 
-
-app.set('views', path.join(__dirname, 'views'));
+app.engine('hbs', hbs.express4({
+  defaultLayout: __dirname + '/views/layout.hbs',
+  partialsDir: __dirname + '/views/partials'
+}));
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
 
 hbs.registerPartial('form-error', '{{errorFormMessage}}')
 hbs.registerPartial('site-error', '{{errorSiteMessage}}')
+hbs.registerPartial('nav-home', '{{nav_home}}')
+hbs.registerPartial('nav-pages', '{{nav_pages}}')
+hbs.registerPartial('modals', '{{modals}}')
 
 
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,0 +1,68 @@
+        <section class="modal ulogin hide">
+            <div class="user-login">
+                <div class="modal-header">
+                    <div class="logo-mark"><img src="/images/kalpaca-estates-logo-mark-white.png"
+                            alt="kalpaca logo mark of an alpaca" /></div>
+                    <h2>Login</h2>
+                    <a href="#" class="close"></a>
+                </div>
+
+                {{> site-error}}
+                <form method="POST" action="/login">
+
+                    <label for="username">Username</label>
+                    <input name="username" type="text" required />
+
+                    <label for="password">Password</label>
+                    <input name="password" type="password" required />
+
+                    <button class="button btn-green submit">Submit</button>
+                    {{> form-error}}
+
+                    <div class="login-option">
+                        <a href="/auth/google">Login With Google</a>
+                    </div>
+
+                    <div class="account-message">
+                        Don't have an account? <a href="#" class="modal-signup">Sign up</a>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <section class="modal uregister hide">
+            <div class="user-signup">
+                <div class="modal-header">
+                    <div class="logo-mark"><img src="/images/kalpaca-estates-logo-mark-white.png"
+                            alt="kalpaca logo mark of an alpaca" /></div>
+                    <h2>Signup</h2>
+                    <a href="#" class="close"></a>
+                </div>
+
+                {{> site-error}}
+                <form method="POST" action="/signup">
+
+                    <label for="username">Username</label>
+                    <input name="username" type="text" required />
+
+                    <label for="password">Password</label>
+                    <input name="password" type="password" required />
+
+                    <label for="passwordConfirm">Confirm Password</label>
+                    <input name="passwordConfirm" type="password" required />
+
+                    <button class="button btn-green submit" onsubmit="return false">Submit</button>
+                    {{#if errorSignupMessage }}
+                    <div class="error-message error-form">{{ errorSignupMessage }}</div>
+                    {{/if}}
+                    {{error}}
+                    {{form-error}}
+                    {{error-form}}
+                    {{message}}                    
+                    <div class="account-message">
+                       Already have an account? <a href="#" class="modal-login">Login</a>
+                    </div>
+                </form>
+                </img>
+        </section>

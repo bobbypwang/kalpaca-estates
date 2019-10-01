@@ -1,20 +1,51 @@
-<div class="user-new">
-    <h2>User Signup</h2>
+<div class="site-wrapper">
+    {{!-- <section>
+        {{#if currentUser}}
+        <h2>Welcome {{currentUser.name}}</h2>
+        <p><a href="/profile/">user profile page</a> for only logged in users?</p>
+        {{else}}
+        <h2>Welcome Stranger</h2>
+        <p>Please <a href="/login">login</a> or <a href="/signup">signup</a> to continue.</p>
+        {{/if}}
+    </section> --}}
+    <div id="content-wrapper">
+        <section class="modal uregister">
+            <div class="user-signup">
+                <div class="modal-header">
+                    <div class="logo-mark"><img src="/images/kalpaca-estates-logo-mark-white.png"
+                            alt="kalpaca logo mark of an alpaca" /></div>
+                    <h2>Signup</h2>
+                </div>
 
-    {{> site-error}}
-    <form method="POST" action="/signup">
+                {{> site-error}}
+                <form method="POST" action="/signup">
 
-        <label for="username">Username:</label>
-        <input name="username" type="text" required />
+                    <label for="username">Username</label>
+                    <input name="username" type="text" required />
 
-        <label for="password">Password:</label>
-        <input name="password" type="password" required />
+                    <label for="password">Password</label>
+                    <input name="password" type="password" required />
 
-        <label for ="passwordConfirm">Confirm Password</label>
-        <input name="passwordConfirm" type="password" required />
+                    <label for="passwordConfirm">Confirm Password</label>
+                    <input name="passwordConfirm" type="password" required />
 
-        <br /><br />
-        <button class="submit" onsubmit="return false">Submit</button>
-        {{> form-error}}
-    </form>
+                    <button class="button btn-green submit" onsubmit="return false">Submit</button>
+                    {{#if errorSignupMessage }}
+                    <div class="error-message error-form">{{ errorSignupMessage }}</div>
+                    {{/if}}
+                    {{error}}
+                    {{form-error}}
+                    {{error-form}}
+                    {{message}}                    
+                    <div class="account-message">
+                       Already have an account? <a href="/login" class="modal-login">Login</a><br />
+                       <a href="/"><- Back to site</a>
+                    </div>
+                </form>
+                </img>
+        </section>
+
+        <div class="page-background" style="background-image:url('/images/kalpaca-estates-002.JPEG');"></div>
+
+    </div>
 </div>

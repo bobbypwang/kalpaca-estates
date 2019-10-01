@@ -1,18 +1,36 @@
-$(".list ul li").hover(
-  function () {
-    $(this).addClass('hover');
-  },
-  function () {
-    $(this).removeClass('hover');
-  }
-);
+$('a.modal-signup').click(function(e) {
+  $('.modal.ulogin').addClass('hide');
+  $('.modal.uregister').removeClass('hide');
+});
 
-$( function() {
-  $( ".datePicker" ).datepicker();
-} );
+$('a.modal-login').click(function(e) {
+  $('.modal.uregister').addClass('hide', 'animated', 'fadeOutDown');
+  $('.modal.ulogin').removeClass('hide').addClass('animated', 'fadeInTop');
+  e.preventDefault();
+});
 
-$(document).ready(function() {
+$('.close').click(function (e) {
+  $(this).parents('.modal').addClass('hide');
+  e.preventDefault();
+});
+
+$(window).on('load', function(){
   Sortable.init();
-  userList = document.querySelector('#userList');
-  userList.addEventListener('Sortable.sorted'), console.log('userList was sorted!');
+  $(".datePicker").datepicker();
+
+  if ($(".the-estate").length > 0) {
+    $('#header').css({
+      ' background-image': 'url(/image/kalpaca-estates-page-banner-0012.jpg)'
+    });
+  }
+});
+
+$(window).bind('scroll', function () {
+  let windowMenuHeight = window.innerHeight - $('.navigation').height();
+
+  if ($(window).scrollTop() > windowMenuHeight) {
+    $('.menu').addClass('fixed');
+  } else {
+    $('.menu').removeClass('fixed');
+  }
 });

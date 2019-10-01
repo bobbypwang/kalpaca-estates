@@ -1,79 +1,99 @@
-<h2>Welcome {{currentUser.name}}</h2>
+<div class="site-wrapper" id="the-estate">
+    {{> nav-pages}}
 
-{{> site-error}}
+    <div id="content-wrapper" class="flex page">
+        <div class="left">
+            <h2>Welcome {{currentUser.name}}</h2>
+            <ul>
+                <li><a href="#">Edit Profile</a></li>
+                <li><a href="#">Bookings</a></li>
+                {{#if user.isAdmin}}
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Rooms</a></li>
+                <li><a href="#">Amnenities</a></li>
+                {{/if}}
+            </ul>
+        </div>
 
-<p>This page is only accessible by logged in users.</p>
+        <div class="right">
+            {{> site-error}}
 
-<section>
-    <h2>Password Change</h2>
-    <form action="/user/password-change" methord="POST">
-        <label for="passwordChange">New Password</label>
-        <input name="passwordChange" type="password" required />
+            <section>
+                <h2>Password Change</h2>
+                <form action="/user/password-change" methord="POST">
+                    <label for="passwordChange">New Password</label>
+                    <input name="passwordChange" type="password" required />
 
-        <label for="passwordChangeConfirm">Confirm Password</label>
-        <input name="passwordChangeConfirm" type="password" required />
+                    <label for="passwordChangeConfirm">Confirm Password</label>
+                    <input name="passwordChangeConfirm" type="password" required />
 
-        <button type="submit">Submit</button>
-    </form>
-</section>
+                    <button type="submit" class="button btn-green">Submit</button>
+                </form>
+            </section>
 
-{{#if user.isAdmin}}
-<h2>Admin Stuff Below</h2>
-<section>
-    <div class="user-creation">
-        <h2>User Creation</h2>
+        {{#if user.isAdmin}}
+        <h2>Admin Stuff Below</h2>
+        <section>
+            <div class="user-creation">
+                <h2>User Creation</h2>
 
-        <form method="POST" action="/signup">
+                <form method="POST" action="/admin/create-new-account">
 
-            <label for="username">Username:</label>
-            <input name="username" type="text" required />
+                    <label for="username">Username:</label>
+                    <input name="username" type="text" required />
 
-            <label for="password">Password:</label>
-            <input name="password" type="password" required />
+                    <label for="password">Password:</label>
+                    <input name="password" type="password" required />
 
-            <label for="password-confirm">Confirm Password</label>
-            <input name="password-confirm" type="password" required />
+                    <label for="password-confirm">Confirm Password</label>
+                    <input name="password-confirm" type="password" required />
 
-            <label for="setAdmin">Set as Administrator:</label><br />
-            <input name="setAdmin" id="NotAnAdmin" type="radio" value="false" selected>
-            <label for="NotAnAdmin">No</label>
-            <input name="setAdmin" id="MakeAnAdmin" type="radio" value="true">
-            <label for="MakeAnAdmin">Yes</label>
+                    <label for="setAdmin">Set as Administrator:</label><br />
+                    <input name="setAdmin" id="NotAnAdmin" type="radio" value="false" selected>
+                    <label for="NotAnAdmin">No</label>
+                    <input name="setAdmin" id="MakeAnAdmin" type="radio" value="true">
+                    <label for="MakeAnAdmin">Yes</label>
 
-            <button>Submit</button>
-            {{> form-error}}
-        </form>
+                    <button class="button btn-green">Submit</button>
+                    {{> form-error}}
+                </form>
+            </div>
+        </section>
+
+        <section>
+            <h2>User List -- View and Edit here</h2>
+            <div class="user-list">
+                <table class="sortable-theme-light" id="userList" data-sortable>
+                    <tr>
+                        <th data-sorted="true">Username</th>
+                        <th data-sorted="true">Role</th>
+                        <th data-sortable="false">Delete</th>
+                        <th data-sortable="false">Edit</th>
+                    </tr>
+                    {{#each allUsers}}
+                    <tr>
+                        <td>{{this.username}}</td>
+                        <td>{{this.role}}</td>
+                        <td><a href="/admin/delete/{{this._id}}">Delete</a></td>
+                        <td><a href="">Edit</a></td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+
+        </section>
+
+        <section>
+            <h2>Room List -- View and Edit here</h2>
+        </section>
+
+        <section>
+            <h2>Amenity List -- View and Edit here</h2>
+        </section>
+        {{/if}}
+        </div>
+
     </div>
-</section>
 
-<section>
-    <h2>User List -- View and Edit here</h2>
-    <div class="user-list">
-        <table class="sortable-theme-light" id ="userList" data-sortable>
-            <tr>
-                <th data-sorted="true">Username</th>
-                <th data-sorted="true">Role</th>
-                <th data-sortable="false">Delete</th>
-                <th data-sortable="false">Edit</th>
-            </tr>
-            {{#each allUsers}}
-            <tr>
-                <td>{{this.username}}</td>
-                <td>{{this.role}}</td>
-                <td><a href="/admin/delete/{{this._id}}">Delete</a></td>
-                <td><a href="">Edit</a></td>
-            </tr>
-            {{/each}}
-        </table>
-    </div>
-
-</section>
-
-<section>
-    <h2>Room List -- View and Edit here</h2>
-</section>
-
-<section>
-    <h2>Amenity List -- View and Edit here</h2>
-</section>
-{{/if}}
+    {{> modals}}
+</div>

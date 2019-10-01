@@ -1,0 +1,35 @@
+<div class="site-wrapper">
+  {{> nav-pages}}
+
+  <div id="content-wrapper" class="page">
+    <h2>See what the area has to offer</h2>
+    <p>Excepteur pariatur veniam pariatur excepteur adipisicing. Mollit ad est officia eiusmod exercitation consequat ullamco pariatur et. Ipsum aliquip dolor Lorem enim tempor id non incididunt nisi sint excepteur nulla ullamco. Incididunt nisi ullamco anim tempor aute adipisicing. Reprehenderit anim in velit consectetur anim ut dolore ipsum aliqua culpa. Minim ullamco aute nisi amet est sit cillum officia nostrud excepteur consectetur. Consectetur mollit eiusmod laboris et commodo.</p>
+
+    <h3>Relax at one of our many spas</h3>
+    <div class="business-list">
+      {{#each searchRes.jsonBody.businesses}}
+      <div class="business">
+        <div class="business-image"  style="background-image: url('{{this.image_url}}');" ><a href="{{this.url}}" target="_blank"></a></div>
+        <h4><a href="{{this.url}}" target="_blank">{{this.name}}</a></h4>
+      </div>
+      {{else}}
+      <p class="empty">No content</p>
+      {{/each}}
+    </div>
+
+    <h3>Grab a bite to eat</h3>
+    <div class="business-list">
+      {{#each featureRes.jsonBody.businesses}}
+      <div class="business">
+        <div class="business-image"  style="background-image: url('{{this.image_url}}');" ></div>
+        <h4><a href="{{this.url}}" target="_blank">{{this.name}}</a></h4>
+      </div>
+      {{else}}
+      <p class="empty">No content</p>
+      {{/each}}
+    </div>
+
+  </div>
+
+  {{> modals}}
+</div>

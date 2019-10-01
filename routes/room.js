@@ -3,7 +3,6 @@ const router = express.Router()
 const Room = require('../models/Room.js')
 const Amenity = require('../models/Amenity.js')
 
-
 router.get('/rooms', (req, res, next) => {
     Room.find({}).populate("amenity")
         .then((allRooms) => {

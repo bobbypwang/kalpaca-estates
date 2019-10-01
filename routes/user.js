@@ -41,7 +41,7 @@ router.post('/signup', (req, res, next) => {
 
     if (req.body.password != req.body.passwordConfirm) {
         req.flash('errorSignupMessage', 'Passwords do not match.')
-        res.redirect("/#signup")
+        res.redirect("/signup")
     } else {
         User.create({
                 username: req.body.username,
@@ -59,8 +59,8 @@ router.post('/signup', (req, res, next) => {
 
                 })
             })
-            .catch(e => {
-                res.status(500).send(e)
+            .catch(error => {
+                req.flash("errorSignupMessage", error)
             })
     }
 
@@ -68,13 +68,13 @@ router.post('/signup', (req, res, next) => {
 
 router.get("/login", (req, res, next) => {
     res.render('users/login', {})
-    req.flash("errorFormMessage", "Please login below to access your profile page.")
+    req.flash("errorFormMessage", "Your username or password is incorrect.")
 });
 
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/profile",
     failureRedirect: "/login",
-    failureFlash: 'Invalid username or password.',
+    failureFlash: "Invalid username or password.",
     passReqToCallback: true
 }));
 

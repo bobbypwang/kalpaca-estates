@@ -1,4 +1,24 @@
-You have been logged out.
-You will be redirected to the homepage shortly.
+<div class="site-wrapper">
+    {{!-- <section>
+        {{#if currentUser}}
+        <h2>Welcome {{currentUser.name}}</h2>
+        <p><a href="/profile/">user profile page</a> for only logged in users?</p>
+        {{else}}
+        <h2>Welcome Stranger</h2>
+        <p>Please <a href="/login">login</a> or <a href="/signup">signup</a> to continue.</p>
+        {{/if}}
+    </section> --}}
+    <div id="content-wrapper">
+        <section class="modal ulogout">
+          <section>
+          <img src="/images/kalpaca-estates-logo-white.png" alt="Kalpaca Estates Logo" />
+          <p>You have been sucessfully logged out and will be redirected to the homepage in 3 seconds.</p>
+          </section>
+        </section>
+
+        <div class="page-background" style="background-image:url('/images/kalpaca-estates-001.JPEG');"></div>
+
+    </div>
+</div>
 
 <script src="/javascripts/logout.js"></script>

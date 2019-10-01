@@ -1,21 +1,83 @@
-#header {
-  width: 100vw;
-  // height: 100vh;
+.user-signup,
+.user-login {
+  background-color: $white;
+  margin: 10% auto 0;
+  width: 500px;
+  border-radius: $radius;
+  box-shadow: 0 7px 11px #312c2ccf;
+
+  .modal-header {
+    display: flex;
+    position: relative;
+    padding: 2rem 2rem 1.2rem;
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+    background-color: $orange;
+    color: $white;
+
+    .logo-mark {
+      background-color: $orange;
+      width: 50px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 8px;
+      margin-bottom: 0;
+      margin-left: 1.2rem;
+      letter-spacing: 1px;
+      font-weight: 400;
+    }
+  }
+
+  form {
+    padding: 2rem;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  flex-flow: row wrap;
-  width: 80vw;
-  margin: 0 auto;
+.the-estate {
+  background-image: url('/images/the-kalpaca-estate.jpg');
 }
 
-.navigation {
-  width: 100%;
+.the-estate,
+.the-residents {
+  min-height: 100vh;
+  padding: 5rem 28%;
+  text-align: center;
+
+  background-size: cover;
+  background-position: top center;
+
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+
+    img {
+      display: inline-block;
+      width: 100%;
+    }
+  }
 }
 
-.website-nav {
-  display: flex;
-  justify-content: space-evenly;
+.booking {
+  div {
+    flex-grow: 2;
+    margin-right: 7px;
+  }
+  input {
+    width: 100%;
+    flex-grow: 2;
+    padding: 1.6rem 1.4rem;
+  }
 }

@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
+
 const User = require('../models/User');
+
+const nodemailer = require('nodemailer');
 
 
 
@@ -20,24 +23,29 @@ router.use((req, res, next) => {
 
 })
 
-router.get('/create-new-account', (req, res, next) => {
-  res.render('user-views/new-account')
-})
+router.post('/create-new-account', (req, res, next) => {
+  const salt = bcrypt.genSaltSync(10)
+  let password = bcrypt.hashSync(req.body.password, salt)
 
-router.get('/active-users', (req, res, next) => {
+  console.log(`the passwordConfirm is [${req.body.passwordConfirm}] and password is [${req.body.password}]`)
 
-  User.find()
-
-    .then((allUsers) => {
-      res.render('user-views/active-users', {
-        users: allUsers
+  if (req.body.password != req.body.passwordConfirm) {
+    req.flash('errorSignupMessage', 'Passwords do not match.')
+    res.redirect("/profile")
+  } else {
+    User.create({
+        username: req.body.username,
+        isAdmin: req.body.setAdmin,
+        role: "user",
+        password: password
       })
-    })
-
-    .catch((err) => {
-      next(err);
-    })
-
+      .then(user => {
+        res.redirect('/profile')
+      })
+      .catch(error => {
+        req.flash("errorSignupMessage", error)
+      })
+  }
 })
 
 router.post('/delete/:id', (req, res, next) => {

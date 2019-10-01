@@ -425,38 +425,379 @@ table[data-sortable].sortable-theme-light tbody td {
 table[data-sortable].sortable-theme-light th[data-sorted="true"] {
   background: #e0e0e0; }
 
-nav ul {
-  list-style-type: none;
-  display: flex; }
+.button {
+  display: block; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif; }
-
-a {
-  text-decoration: none; }
+header {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden; }
+  header.page {
+    height: 350px;
+    background-image: url(/images/kalpaca-estates-page-banner-001.jpg);
+    background-size: contain; }
+    header.page .header {
+      height: 100%;
+      background-image: linear-gradient(rgba(255, 47, 0, 0.09), rgba(255, 47, 0, 0.46)); }
+      header.page .header .booknow,
+      header.page .header .user-nav {
+        margin-top: 110px; }
+      header.page .header h1 {
+        margin-bottom: 0;
+        margin-top: 6rem; }
+      header.page .header .site-logo img {
+        margin-bottom: 0; }
+  header ul {
+    list-style-type: none;
+    display: flex; }
+  header video {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%; }
+  header .header-video:before {
+    content: '';
+    position: absolute;
+    background-image: linear-gradient(rgba(255, 47, 0, 0.09), rgba(255, 47, 0, 0.46));
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
 
 .header {
-  text-align: center; }
-
-.navigation {
-  text-align: center; }
-
-#header {
-  width: 100vw; }
-
-.header {
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
-  width: 80vw;
-  margin: 0 auto; }
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0; }
 
 .navigation {
-  width: 100%; }
+  width: 100%;
+  padding-bottom: 8px; }
 
 .website-nav {
   display: flex;
   justify-content: space-evenly; }
+
+.modal {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8); }
+  .modal.ulogout section {
+    width: 500px;
+    margin: 10% auto 0;
+    padding: 2rem;
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-align: center; }
+    .modal.ulogout section img {
+      width: 100%;
+      margin-bottom: 1rem; }
+
+form input {
+  width: 100%;
+  padding: 11px 15px;
+  margin-bottom: 2rem;
+  border: 1px solid #bbbbbb;
+  font-size: 1rem; }
+
+.button {
+  margin-bottom: 1rem;
+  padding: 11px 15px;
+  border: 1px solid #bbbbbb;
+  text-align: center; }
+
+.btn-green {
+  background-color: #74a534;
+  border: 1px solid #94ca52;
+  color: white; }
+  .btn-green:hover {
+    background-color: #68b503;
+    cursor: pointer; }
+
+.close {
+  display: block;
+  width: 29px;
+  height: 29px;
+  border-radius: 40px;
+  position: absolute;
+  border: 1px solid #e69b52;
+  right: 39px;
+  top: 42px; }
+  .close:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer; }
+    .close:hover:before {
+      color: #ffffff; }
+  .close:before {
+    content: 'x';
+    width: 20px;
+    height: 20px;
+    font-weight: 700;
+    margin-left: 9px;
+    line-height: 24px;
+    color: #e69b52;
+    font-size: 1rem; }
+
+.page-background {
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center; }
+
+#content-wrapper {
+  font-size: 18px;
+  background-color: #ffffff; }
+  #content-wrapper.page {
+    padding: 5rem; }
+
+.business-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between; }
+  .business-list .business {
+    width: 23%;
+    margin-bottom: 1rem; }
+    .business-list .business:hover > .business-image {
+      background-size: 150%;
+      transition: 500ms all; }
+    .business-list .business a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: #74a534; }
+      .business-list .business a:hover {
+        color: #68b503; }
+    .business-list .business .business-image {
+      width: 100%;
+      height: 1vh;
+      min-height: 250px;
+      max-height: 500px;
+      background-position: center center;
+      background-size: 130%;
+      background-repeat: no-repeat; }
+
+.flex {
+  display: flex;
+  justify-content: space-between; }
+
+.header .booknow,
+.header .user-nav {
+  display: block;
+  align-self: center;
+  margin-top: 85px;
+  margin-bottom: 0;
+  padding: 11px 22px;
+  background-color: #74a534;
+  border: 1px solid #94ca52;
+  font-weight: 300;
+  font-size: .9rem;
+  text-transform: uppercase;
+  box-shadow: 0 2px 2px #00000030;
+  color: #ffffff; }
+  .header .booknow:hover,
+  .header .user-nav:hover {
+    background-color: #68b503;
+    cursor: pointer; }
+
+.header .booknow {
+  margin-left: -10px;
+  letter-spacing: 1px;
+  border-radius: 0 24px 24px 0; }
+  .header .booknow:hover {
+    margin-left: 0;
+    font-weight: 600; }
+
+.header .user-nav {
+  margin-right: -10px;
+  font-weight: 300;
+  border-radius: 24px 0 0 24px; }
+  .header .user-nav:hover {
+    margin-right: 0; }
+  .header .user-nav a {
+    margin-right: 7px;
+    font-size: .9rem;
+    letter-spacing: 1px;
+    color: #eeeeee; }
+    .header .user-nav a:hover {
+      color: #ffffff;
+      font-weight: 600; }
+    .header .user-nav a:first-child {
+      margin-left: 0;
+      margin-right: 7px; }
+    .header .user-nav a:last-child {
+      margin-left: 7px;
+      margin-right: 0; }
+
+.header nav {
+  background-color: rgba(212, 104, 0, 0.8);
+  box-shadow: 0px -4px 20px #0000001f;
+  border-top: 2px solid #ff8612;
+  position: absolute;
+  bottom: 0; }
+  .header nav a {
+    display: block;
+    padding: 15px 1rem 0px;
+    font-family: "Karma", "Times New Roman", "Georgia", serif;
+    color: #fff2e5;
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    border-bottom: 5px solid #d46800; }
+    .header nav a:hover {
+      color: #ffffff;
+      border-bottom: 5px solid #ff9e41; }
+
+.header .site-logo img {
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  margin-bottom: 89px; }
+
+body {
+  font-size: 16px;
+  line-height: 1.6rem; }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  display: block;
+  font-family: "Karma", "Times New Roman", "Georgia", serif;
+  font-weight: 100;
+  margin: 1.6rem 0; }
+
+h1 {
+  font-size: 3.6rem;
+  line-height: 3.6rem; }
+
+h2 {
+  font-size: 2.8rem;
+  line-height: 2.8rem; }
+
+h3 {
+  font-size: 2.2rem;
+  line-height: 2.2rem; }
+
+h4 {
+  font-size: 1.8rem;
+  line-height: 1.8rem; }
+
+h5 {
+  font-size: 1.6rem;
+  line-height: 1.6rem; }
+
+a {
+  text-decoration: none; }
+
+.site-wrapper h1,
+.site-wrapper h2,
+.site-wrapper h3,
+.site-wrapper h4,
+.site-wrapper h5 {
+  color: #d46800; }
+
+.site-wrapper h1 {
+  margin: 1.6rem 0; }
+  .site-wrapper h1:first-child {
+    margin-top: unset; }
+
+.modal h2 {
+  color: #ffffff; }
+
+.header {
+  text-align: center; }
+
+.navigation {
+  text-align: center; }
+
+.error-message {
+  color: red; }
+
+.user-signup,
+.user-login {
+  background-color: #ffffff;
+  margin: 10% auto 0;
+  width: 500px;
+  border-radius: 11px;
+  box-shadow: 0 7px 11px #312c2ccf; }
+  .user-signup .modal-header,
+  .user-login .modal-header {
+    display: flex;
+    position: relative;
+    padding: 2rem 2rem 1.2rem;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    background-color: #d46800;
+    color: #ffffff; }
+    .user-signup .modal-header .logo-mark,
+    .user-login .modal-header .logo-mark {
+      background-color: #d46800;
+      width: 50px; }
+      .user-signup .modal-header .logo-mark img,
+      .user-login .modal-header .logo-mark img {
+        width: 100%; }
+    .user-signup .modal-header h2,
+    .user-login .modal-header h2 {
+      font-size: 1.8rem;
+      margin-top: 8px;
+      margin-bottom: 0;
+      margin-left: 1.2rem;
+      letter-spacing: 1px;
+      font-weight: 400; }
+  .user-signup form,
+  .user-login form {
+    padding: 2rem;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px; }
+
+.the-estate {
+  background-image: url("/images/the-kalpaca-estate.jpg"); }
+
+.the-estate,
+.the-residents {
+  min-height: 100vh;
+  padding: 5rem 28%;
+  text-align: center;
+  background-size: cover;
+  background-position: top center; }
+  .the-estate h1,
+  .the-residents h1 {
+    width: 100%;
+    text-align: center; }
+  .the-estate p,
+  .the-residents p {
+    font-size: 1.4rem;
+    line-height: 2.4rem; }
+    .the-estate p img,
+    .the-residents p img {
+      display: inline-block;
+      width: 100%; }
+
+.booking div {
+  flex-grow: 2;
+  margin-right: 7px; }
+
+.booking input {
+  width: 100%;
+  flex-grow: 2;
+  padding: 1.6rem 1.4rem; }
 
 *,
 html,
@@ -468,9 +809,12 @@ body {
 
 body {
   font-size: 14px;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+  font-family: "Nunito Sans", "Open Sans", Helvetica, Arial, sans-serif; }
 
 section {
-  margin-bottom: 2rem; }
+  z-index: 1; }
+
+.hide {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,26 @@
+      <div class="header container">
+        <a href="/booking" class="booknow button">Book Now</a>
+        <a href="/" class="site-logo">
+          <h1><img src="/images/kalpaca-estates-logo-white.png" alt="{{title}} logo" /></h1>
+        </a>
+
+        <div class="user-nav">
+          {{#if currentUser}}
+          <span>Welcome <b>{{currentUser.username}}</b></span> -
+          <span><a href="/profile">Profile</a></span> / 
+          <span><a href="/logout">Logout</a></span>
+          {{else}}
+          <span><a href="#" class="modal-signup">Signup</a></span> / 
+          <span><a href="#" class="modal-login">Login</a></span>
+          {{/if}}
+        </div>
+        <nav class="navigation">
+          <ul class="website-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/the-estate">The Estate</a></li>
+            <li><a href="/the-residents">The Residents</a></li>
+            <li><a href="/visit">Visit</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>

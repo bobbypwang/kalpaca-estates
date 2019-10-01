@@ -1,0 +1,229 @@
+.button {
+  display: block;
+}
+
+header {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &.page {
+    height: 350px;
+    background-image: url(/images/kalpaca-estates-page-banner-001.jpg);
+    background-size: contain;
+
+    .header {
+      height: 100%;
+      background-image: linear-gradient(rgba(255, 47, 0, 0.09), rgba(255, 47, 0, 0.46));
+
+      .booknow,
+      .user-nav {
+        margin-top: 110px;
+      }
+
+      h1 {
+        margin-bottom: 0;
+        margin-top: 6rem;
+      }
+
+      .site-logo img {
+        margin-bottom: 0;
+      }
+
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+  }
+
+  video {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .header-video {
+    &:before {
+      content: '';
+      position: absolute;
+      background-image: linear-gradient(rgba(255, 47, 0, 0.09), rgba(255, 47, 0, 0.46));
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+.header {
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0;
+}
+
+.navigation {
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+.website-nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.modal {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.80);
+
+  &.ulogout section {
+    width: 500px;
+    margin: 10% auto 0;
+    padding: 2rem;
+    color: $white;
+    font-size: 1.2rem;
+    text-align: center;
+
+    img {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+form {
+  input {
+    width: 100%;
+    padding: 11px 15px;
+    margin-bottom: 2rem;
+    border: 1px solid $lightgray;
+    font-size: 1rem;
+  }
+}
+
+.button {
+  margin-bottom: 1rem;
+  padding: 11px 15px;
+  border: 1px solid $lightgray;
+  text-align: center;
+}
+
+.btn-green {
+  background-color: $green;
+  border: 1px solid $greenborder;
+  color: white;
+
+  &:hover {
+    background-color: $greenhover;
+    cursor: pointer;
+  }
+}
+
+.close {
+  display: block;
+  width: 29px;
+  height: 29px;
+  border-radius: 40px;
+  position: absolute;
+  border: 1px solid #e69b52;
+  right: 39px;
+  top: 42px;
+
+  &:hover {
+    color: $white;
+    border-color: $white;
+    cursor: pointer;
+
+    &:before {
+      color: $white;
+    }
+  }
+
+  &:before {
+    content: 'x';
+    width: 20px;
+    height: 20px;
+    font-weight: 700;
+    margin-left: 9px;
+    line-height: 24px;
+    color: #e69b52;
+    font-size: 1rem;
+  }
+}
+
+.page-background {
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+}
+
+#content-wrapper {
+  font-size: 18px;
+  background-color: $white;
+
+  &.page {
+    padding: 5rem;
+  }
+}
+
+.business-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  .business {
+    width: 23%;
+    margin-bottom: 1rem;
+
+    &:hover > .business-image {
+      background-size: 150%;
+      transition: 500ms all;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: $green;
+
+      &:hover {
+        color: $greenhover;
+      }
+    }
+
+    .business-image {
+      width: 100%;
+      height: 1vh;
+      min-height: 250px;
+      max-height: 500px;
+      background-position: center center;
+      background-size: 130%;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,1 +1,22 @@
-Booking page here
+<div class="site-wrapper">
+  {{> nav-pages}}
+
+  <div id="content-wrapper" class="page">
+    <section class="container content booking">
+      <h2>Book a Kalpaca Stay</h2>
+      <form action="/booking" method="POST" class="booking flex">
+        <div>
+          <label for="checkInDate">Check In</label>
+          Date: <input type="text" id="datepickerStart" class="datePicker" name="checkInDate">
+        </div>
+        <div>
+          <label for="checkOutDate">Check Out</label>
+          Date: <input type="text" id="datepickerEnd" class="datePicker" name="checkOutDate">
+        </div>
+        <button class="button btn-green" style="height: 76px;margin-top: 24px;">Submit</button>
+      </form>
+    </section>
+  </div>
+
+  {{> modals}}
+</div>

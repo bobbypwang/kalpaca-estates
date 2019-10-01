@@ -1,3 +1,8 @@
+$orange: #d46800;
+$green: #74a534;
+$greenhover: #68b503;
+$greenborder: #94ca52;
+
 $black: #000000;
 $darkgray: #222222;
 $gray: #444444;
@@ -5,8 +10,10 @@ $lightgray: #bbbbbb;
 $lightergray: #eeeeee;
 $white: #ffffff;
 
-$headerfont: "Open Sans", Helvetica, Arial, sans-serif;
-$bodyfont:  "Open Sans", Helvetica, Arial, sans-serif;
+$headerfont: "Karma", "Times New Roman", "Georgia", serif;
+$bodyfont:  "Nunito Sans","Open Sans", Helvetica, Arial, sans-serif;
+
+$radius: 11px;
 
 @import 'parts/normalize';
 @import 'parts/sortable';
@@ -32,5 +39,9 @@ body {
 }
 
 section {
-  margin-bottom: 2rem;
+  z-index: 1;
+}
+
+.hide {
+  display: none;
 }

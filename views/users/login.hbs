@@ -1,24 +1,48 @@
-<div class="user-new">
-    <h2>User Login</h2>
-    {{> site-error}}
-    <form method="POST" action="/login">
+<div class="site-wrapper">
+    {{!-- <section>
+        {{#if currentUser}}
+        <h2>Welcome {{currentUser.name}}</h2>
+        <p><a href="/profile/">user profile page</a> for only logged in users?</p>
+        {{else}}
+        <h2>Welcome Stranger</h2>
+        <p>Please <a href="/login">login</a> or <a href="/signup">signup</a> to continue.</p>
+        {{/if}}
+    </section> --}}
+    <div id="content-wrapper">
+        <section class="modal ulogin">
+            <div class="user-login">
+                <div class="modal-header">
+                    <div class="logo-mark"><img src="/images/kalpaca-estates-logo-mark-white.png"
+                            alt="kalpaca logo mark of an alpaca" /></div>
+                    <h2>Login</h2>
+                </div>
 
-        <label for="username">Username:</label>
-        <input name="username" type="text" required />
+                <form method="POST" action="/login">
 
-        <label for="password">Password:</label>
-        <input name="password" type="password" required />
+                    <label for="username">Username</label>
+                    <input name="username" type="text" required />
 
-        <button class="submit" onsubmit="return false">Submit</button>
-        {{> form-error}}
+                    <label for="password">Password</label>
+                    <input name="password" type="password" required />
 
-        <p class="account-message">
-            Don't have an account? <a href="/signup">Sign up</a>
-        </p>
+                    <button class="button btn-green submit">Submit</button>
+                    {{> site-error}}
+                    {{> form-error}}
 
-        <div>
-            <a href="/auth/google">Login With Google</a>
-        </div>
+                    <div class="login-option">
+                        <a href="/auth/google">Login With Google</a>
+                    </div>
 
-    </form>
+                    <div class="account-message">
+                        Don't have an account? <a href="/signup">Sign up</a><br />
+                       <a href="/"><- Back to site</a>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <div class="page-background" style="background-image:url('/images/kalpaca-estates-001.JPEG');"></div>
+
+    </div>
 </div>
